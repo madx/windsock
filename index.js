@@ -1,5 +1,5 @@
-import React from "react"
-import clsx from "clsx"
+const React = require("react")
+const clsx = require("clsx")
 
 function isFunction(object) {
   return Boolean(object && object.constructor && object.call && object.apply)
@@ -29,14 +29,17 @@ function filterProps(props, noForward) {
 
 const twBuilder = (Component, options = {}) => (styles, ...replacements) => (
   props
-) => (
-  <Component
-    {...(options.noForward ? filterProps(props, options.noForward) : props)}
-    className={makeStyles(props, styles, ...replacements)}
-  />
-)
+) =>
+  React.createElement(Component, {
+    ...(options.noForward ? filterProps(props, options.noForward) : props),
+    classNames: makeStyles(props, styles, ...replacements),
+  })
 
-export default new Proxy(twBuilder, {
+Object.defineProperty(exports, "__esModule", {
+  value: true,
+})
+
+exports.default = new Proxy(twBuilder, {
   get: (obj, prop) => {
     return obj(prop)
   },

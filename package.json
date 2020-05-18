@@ -22,5 +22,15 @@
   "bugs": {
     "url": "https://github.com/madx/tailwind-components/issues"
   },
-  "homepage": "https://github.com/madx/tailwind-components#readme"
+  "homepage": "https://github.com/madx/tailwind-components#readme",
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  },
+  "prettier": {
+    "semi": false
+  },
+  "peerDependencies": {
+    "clsx": "^1.1.0",
+    "react": "^16.13.1"
+  }
 }
