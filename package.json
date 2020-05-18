@@ -1,0 +1,26 @@
+{
+  "name": "windsock",
+  "version": "0.0.0",
+  "description": "Generate React components from Tailwind classes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madx/tailwind-components.git"
+  },
+  "keywords": [
+    "react",
+    "tailwind",
+    "tailwindcss",
+    "css-in-js",
+    "styled-components"
+  ],
+  "author": "François Vaux <francois@yapok.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/madx/tailwind-components/issues"
+  },
+  "homepage": "https://github.com/madx/tailwind-components#readme"
+}
