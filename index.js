@@ -32,7 +32,7 @@ const windsock = (Component, options = {}) => (styles, ...replacements) => (
 ) =>
   React.createElement(Component, {
     ...(options.noForward ? filterProps(props, options.noForward) : props),
-    classNames: makeStyles(props, styles, replacements),
+    className: resolveStyles(props, styles, replacements),
   })
 
 Object.defineProperty(exports, "__esModule", {
