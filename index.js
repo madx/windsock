@@ -27,7 +27,7 @@ function filterProps(props, noForward) {
   )
 }
 
-const twBuilder = (Component, options = {}) => (styles, ...replacements) => (
+const windsock = (Component, options = {}) => (styles, ...replacements) => (
   props
 ) =>
   React.createElement(Component, {
@@ -39,7 +39,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true,
 })
 
-exports.default = new Proxy(twBuilder, {
+exports.default = new Proxy(windsock, {
   get: (obj, prop) => {
     return obj(prop)
   },
