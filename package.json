@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/madx/tailwind-components.git"
+    "url": "git+https://github.com/madx/windsock.git"
   },
   "keywords": [
     "react",
@@ -20,9 +20,9 @@
   "author": "François Vaux <francois@yapok.org>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/madx/tailwind-components/issues"
+    "url": "https://github.com/madx/windsock/issues"
   },
-  "homepage": "https://github.com/madx/tailwind-components#readme",
+  "homepage": "https://github.com/madx/windsock#readme",
   "devDependencies": {
     "prettier": "^2.0.5"
   },
