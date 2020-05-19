@@ -5,24 +5,22 @@ function isFunction(object) {
   return Boolean(object && object.constructor && object.call && object.apply)
 }
 
-function makeStyles(props, styles, replacements) {
-  const validStyles = styles
-    .flatMap((s, i) => [
-      s.split(/\s+/g).join(" "),
-      replacements[i]
-        ? isFunction(replacements[i])
-          ? clsx(replacements[i](props))
-          : replacements[i]
-        : "",
-    ])
-    .map((s) => s.trim())
-    .filter((s) => s.length)
-  return clsx(validStyles, props.className)
+function resolveStyles(props, styles, replacements) {
+  const resolved = styles.flatMap((s, i) => [
+    s.replace(/\s+/g, " ").trim(),
+    replacements[i] && isFunction(replacements[i])
+      ? replacements[i](props)
+      : replacements[i],
+  ])
+  return clsx(resolved, props.className)
 }
 
 function filterProps(props, noForward) {
-  return Object.keys(props).reduce(
-    (a, e) => (noForward.includes(e) ? a : { ...a, [e]: props[e] }),
+  return Object.entries(props).reduce(
+    (filteredProps, [propName, propValue]) =>
+      noForward.includes(propName)
+        ? filteredProps
+        : { ...filteredProps, [propName]: propValue },
     {}
   )
 }
