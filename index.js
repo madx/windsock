@@ -5,7 +5,7 @@ function isFunction(object) {
   return Boolean(object && object.constructor && object.call && object.apply)
 }
 
-function makeStyles(props, styles, ...replacements) {
+function makeStyles(props, styles, replacements) {
   const validStyles = styles
     .flatMap((s, i) => [
       s.split(/\s+/g).join(" "),
@@ -32,7 +32,7 @@ const windsock = (Component, options = {}) => (styles, ...replacements) => (
 ) =>
   React.createElement(Component, {
     ...(options.noForward ? filterProps(props, options.noForward) : props),
-    classNames: makeStyles(props, styles, ...replacements),
+    classNames: makeStyles(props, styles, replacements),
   })
 
 Object.defineProperty(exports, "__esModule", {
