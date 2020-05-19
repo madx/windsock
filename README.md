@@ -76,3 +76,7 @@ styles with custom classes.
 As you may have noticed there is no dependency to Tailwind because it is not
 needed! This also means that `windsock` works with any atomic CSS framework,
 even your in-house one!
+
+## Tests
+
+Just execute `yarn test` !
