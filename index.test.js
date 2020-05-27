@@ -1,23 +1,22 @@
 import React from "react"
-import { create } from "react-test-renderer"
+import { render } from "@testing-library/react"
+import { toHaveAttribute } from "@testing-library/jest-dom"
 
 import tw from "./"
 
 describe("Windsock", () => {
   it("should return one class", () => {
     const Component = tw.div`text-red-500`
-    let wrapper = create(<Component />)
-    const renderedComponent = wrapper.root.findByType("div")
-    expect(renderedComponent).toBeTruthy()
-    expect(renderedComponent.props.className).toBe("text-red-500")
+    const { container } = render(<Component />)
+    expect(container).toBeTruthy()
+    expect(container.querySelector("div").className).toBe("text-red-500")
   })
 
   it("should return multiple class", () => {
     const Component = tw.div`text-red-500 border`
-    let wrapper = create(<Component />)
-    const renderedComponent = wrapper.root.findByType("div")
-    expect(renderedComponent).toBeTruthy()
-    expect(renderedComponent.props.className).toBe("text-red-500 border")
+    let { container } = render(<Component />)
+    expect(container).toBeTruthy()
+    expect(container.querySelector("div").className).toBe("text-red-500 border")
   })
 
   it("should return multiple class with break lines", () => {
@@ -25,10 +24,9 @@ describe("Windsock", () => {
       text-red-500
       flex 
      `
-    let wrapper = create(<Component />)
-    const renderedComponent = wrapper.root.findByType("div")
-    expect(renderedComponent).toBeTruthy()
-    expect(renderedComponent.props.className).toBe("text-red-500 flex")
+    let { container } = render(<Component />)
+    expect(container).toBeTruthy()
+    expect(container.querySelector("div").className).toBe("text-red-500 flex")
   })
 
   it("should return an existing Component", () => {
@@ -36,41 +34,34 @@ describe("Windsock", () => {
       <p className={`${props.className} text-red-500`} />
     )
     const Component = tw(ExistingComponent)`border`
-    const wrapper = create(<Component />)
-    const renderedComponent = wrapper.root.findByType("p")
-    expect(renderedComponent).toBeTruthy()
-    expect(renderedComponent.props.className).toBe("border text-red-500")
-  })
-
-  it("should return a Component", () => {
-    const Component = tw.yolo`text-red-500`
-    const wrapper = create(<Component />)
-    const renderedComponent = wrapper.root.findByType("yolo")
-    expect(renderedComponent).toBeTruthy()
-    expect(renderedComponent.props.className).toBe("text-red-500")
+    const { container } = render(<Component />)
+    expect(container).toBeTruthy()
+    expect(container.querySelector("p").className).toBe("border text-red-500")
   })
 
   it("should return a Component forwarding props", () => {
     const Component = tw("code")`
-        font-mono
-        ${({ language }) => `language-${language}`}
-      `
-    const wrapper = create(<Component language="html" />)
-    const renderedComponent = wrapper.root.findByType("code")
-    expect(renderedComponent).toBeTruthy()
-    expect(renderedComponent.props.className).toBe("font-mono language-html")
-    expect(renderedComponent.props.language).toBe("html")
+     font-mono
+     ${({ language }) => `language-${language}`}
+   `
+    const { container } = render(<Component language="html" />)
+    expect(container).toBeTruthy()
+    expect(container.querySelector("code").className).toBe(
+      "font-mono language-html"
+    )
+    expect(container.querySelector("code")).toHaveAttribute("language")
   })
 
   it("should return a Component without forwarding props", () => {
     const Component = tw("code", { noForward: ["language"] })`
-        font-mono
-        ${({ language }) => `language-${language}`}
-      `
-    const wrapper = create(<Component language="html" />)
-    const renderedComponent = wrapper.root.findByType("code")
-    expect(renderedComponent).toBeTruthy()
-    expect(renderedComponent.props.className).toBe("font-mono language-html")
-    expect(renderedComponent.props.language).toBeFalsy()
+     font-mono
+     ${({ language }) => `language-${language}`}
+   `
+    const { container } = render(<Component language="html" />)
+    expect(container).toBeTruthy()
+    expect(container.querySelector("code").className).toBe(
+      "font-mono language-html"
+    )
+    expect(container.querySelector("code")).not.toHaveAttribute("language")
   })
 })
