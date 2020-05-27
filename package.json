@@ -4,7 +4,7 @@
   "description": "Generate React components from Tailwind classes",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,15 @@
   },
   "homepage": "https://github.com/madx/windsock#readme",
   "devDependencies": {
-    "prettier": "^2.0.5"
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "clsx": "^1.1.0",
+    "jest": "^26.0.1",
+    "prettier": "^2.0.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-test-renderer": "^16.13.1"
   },
   "prettier": {
     "semi": false
