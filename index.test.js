@@ -1,7 +1,7 @@
-const React = require("react")
-const { create } = require("react-test-renderer")
+import React from "react"
+import { create } from "react-test-renderer"
 
-const tw = require("./index.js").default
+import tw from "./"
 
 describe("Windsock", () => {
   it("should return one class", () => {

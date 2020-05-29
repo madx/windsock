@@ -1,5 +1,5 @@
-const React = require("react")
-const clsx = require("clsx")
+import React from "react"
+import clsx from "clsx"
 
 function isFunction(object) {
   return Boolean(object && object.constructor && object.call && object.apply)
@@ -33,11 +33,7 @@ const windsock = (Component, options = {}) => (styles, ...replacements) => (
     className: resolveStyles(props, styles, replacements),
   })
 
-Object.defineProperty(exports, "__esModule", {
-  value: true,
-})
-
-exports.default = new Proxy(windsock, {
+export default new Proxy(windsock, {
   get: (obj, prop) => {
     return obj(prop)
   },
