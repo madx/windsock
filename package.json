@@ -1,6 +1,6 @@
 {
   "name": "windsock",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "description": "Generate React components from Tailwind classes",
   "main": "cjs.js",
   "module": "index.js",
