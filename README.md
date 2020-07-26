@@ -18,20 +18,20 @@ $ yarn add windsock clsx react
 ## Usage
 
 ```js
-import tw from "windsock"
+import tag from "windsock"
 ```
 
 Simple component with an HTML tag:
 
 ```js
-const RedParagraph = tw.p`text-red-500`
+const RedParagraph = tag.p`text-red-500`
 // => <p class="text-red-500"></p>
 ```
 
 You can use line breaks for readability:
 
 ```js
-const MoreStyles = tw.div`
+const MoreStyles = tag.div`
   border
   border-blue-300
   p-2
@@ -42,7 +42,7 @@ const MoreStyles = tw.div`
 Extend an existing component:
 
 ```js
-const RedParagraphWithUnderline = tw(RedParagraph)`underline`
+const RedParagraphWithUnderline = tag(RedParagraph)`underline`
 // => <p class="text-red-500 underline"></p>
 ```
 
@@ -50,7 +50,7 @@ Interpolation with a function. The function receives the props as first
 argument:
 
 ```js
-const Code = tw.code`
+const Code = tag.code`
   font-mono
   ${({ language }) => `language-${language}`}
 `
@@ -60,7 +60,7 @@ const Code = tw.code`
 Prevent forwarding unwanted props to HTML tags:
 
 ```js
-const Code = tw("code", { noForward: ["language"] })`
+const Code = tag("code", { noForward: ["language"] })`
   font-mono
   ${({ language }) => `language-${language}`}
 `
