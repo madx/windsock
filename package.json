@@ -6,7 +6,7 @@
   "module": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "rollup --format=cjs --external clsx,react  index.js > cjs.js"
+    "build": "rollup --format=cjs --exports named --external clsx,react  index.js > cjs.js"
   },
   "repository": {
     "type": "git",
