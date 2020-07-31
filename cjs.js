@@ -31,13 +31,14 @@ function filterProps(props, noForward) {
   )
 }
 
-const windsock = (Component, options = {}) => (styles, ...replacements) => (
-  props
-) =>
-  React.createElement(Component, {
-    ...(options.noForward ? filterProps(props, options.noForward) : props),
-    className: resolveStyles(props, styles, replacements),
-  });
+const windsock = (Component, options = {}) => (styles, ...replacements) =>
+  React.forwardRef((props, ref) =>
+    React.createElement(Component, {
+      ...(options.noForward ? filterProps(props, options.noForward) : props),
+      className: resolveStyles(props, styles, replacements),
+      ref,
+    })
+  );
 
 var index = new Proxy(windsock, {
   get: (obj, prop) => {
